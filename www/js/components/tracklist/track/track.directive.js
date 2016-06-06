@@ -1,0 +1,8 @@
+module.exports = function() {
+    return {
+
+        controller: "TrackController",
+        controllerAs: "track",
+        templateUrl: "js/components/tracklist/track/track.view.html"
+    }
+}

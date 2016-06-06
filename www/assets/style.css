@@ -1,0 +1,13 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+track {
+    padding: 5px;
+    width: 100%;
+    height: 50px;
+    display: block;
+    border-bottom: 1px black solid;
+    background-color: grey;
+}

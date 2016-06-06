@@ -1,0 +1,1 @@
+console.error("Error: Cannot find module 'C:\\Users\\Gaetan\\WebstormProjects\\beatbox\\js\\app.js' from 'C:\\Users\\Gaetan\\WebstormProjects\\beatbox'");
