@@ -35498,7 +35498,7 @@ var moduleName = "track";
 var trackModule = angular.module(moduleName, modules);
 
 trackModule.directive("track", trackDirective);
-trackModule.factory("TrackService", trackService);
+trackModule.factory("Track", trackService);
 trackModule.controller("TrackController", trackController);
 
 trackModule.name = moduleName;
@@ -35509,15 +35509,15 @@ var Track = function() {
     this.name = "hey";
 };
 
-module.exports = Track;
+module.exports = function() {
+    return Track;
+}
 },{}],9:[function(require,module,exports){
 module.exports = ["TracklistService", function(TracklistService) {
 
     this.tracklistService = TracklistService;
 
-    console.log(TracklistService);
     this.addTrack = function() {
-        console.log("ho");
         this.tracklistService.addTrack();
     }
 
@@ -35555,14 +35555,12 @@ tracklistModule.controller("TracklistController", tracklistController);
 
 module.exports = tracklistModule;
 },{"./track/track.module":7,"./tracklist.controller":9,"./tracklist.directive":10,"./tracklist.service":12,"angular":3}],12:[function(require,module,exports){
-module.exports = ["$http", function(Track) {
+module.exports = ["Track", function(Track) {
 
     this.tracks = [];
 
     this.addTrack = function() {
-       // this.tracks.push(new Track());
-        this.tracks.push(1);
-        console.log("hi");
+        this.tracks.push(new Track());
     }
 
     this.getTracks = function() {

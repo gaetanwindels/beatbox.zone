@@ -1,11 +1,9 @@
-module.exports = ["$http", function(Track) {
+module.exports = ["Track", function(Track) {
 
     this.tracks = [];
 
     this.addTrack = function() {
-       // this.tracks.push(new Track());
-        this.tracks.push(1);
-        console.log("hi");
+        this.tracks.push(new Track());
     }
 
     this.getTracks = function() {
