@@ -22,6 +22,15 @@ module.exports = ["Track", function(Track) {
         }
     }
 
+    this.lowerFrequency = function() {
+        var calcFrequency = this.service.getFrequency() - 10;
+        this.service.setFrequency(Math.max(0, calcFrequency));
+    }
+
+    this.increaseFrequency = function() {
+        this.service.setFrequency(this.service.getFrequency() + 10);
+    }
+
     //this.ngModel && this.ngModel.isLooping();
 
 

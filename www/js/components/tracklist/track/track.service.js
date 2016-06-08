@@ -5,6 +5,8 @@ module.exports = [function() {
         this.recording = false;
         this.looping = false;
 
+        this.frequency = 50;
+
         this.isSong1 = true;
     };
 
@@ -32,6 +34,14 @@ module.exports = [function() {
         this.looping = looping;
     }
 
+    Track.prototype.setFrequency = function(frequency) {
+        this.frequency = frequency;
+    }
+
+    Track.prototype.getFrequency = function() {
+        return this.frequency;
+    }
+
     Track.prototype.play = function() {
         this._setPlaying(true);
         var digit = this.isSong1 ? 1 : 2;
@@ -52,7 +62,7 @@ module.exports = [function() {
 
                 window.setTimeout(function() {
                     this.sound.play();
-                }.bind(this), 20);
+                }.bind(this), this.getFrequency());
             }.bind(this));
         }
     }

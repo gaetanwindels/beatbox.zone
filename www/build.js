@@ -35496,6 +35496,15 @@ module.exports = ["Track", function(Track) {
         }
     }
 
+    this.lowerFrequency = function() {
+        var calcFrequency = this.service.getFrequency() - 10;
+        this.service.setFrequency(Math.max(0, calcFrequency));
+    }
+
+    this.increaseFrequency = function() {
+        this.service.setFrequency(this.service.getFrequency() + 10);
+    }
+
     //this.ngModel && this.ngModel.isLooping();
 
 
@@ -35541,6 +35550,8 @@ module.exports = [function() {
         this.recording = false;
         this.looping = false;
 
+        this.frequency = 50;
+
         this.isSong1 = true;
     };
 
@@ -35568,6 +35579,14 @@ module.exports = [function() {
         this.looping = looping;
     }
 
+    Track.prototype.setFrequency = function(frequency) {
+        this.frequency = frequency;
+    }
+
+    Track.prototype.getFrequency = function() {
+        return this.frequency;
+    }
+
     Track.prototype.play = function() {
         this._setPlaying(true);
         var digit = this.isSong1 ? 1 : 2;
@@ -35588,7 +35607,7 @@ module.exports = [function() {
 
                 window.setTimeout(function() {
                     this.sound.play();
-                }.bind(this), 20);
+                }.bind(this), this.getFrequency());
             }.bind(this));
         }
     }
