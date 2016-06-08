@@ -3,6 +3,10 @@ module.exports = function() {
 
         controller: "TrackController",
         controllerAs: "track",
-        templateUrl: "js/components/tracklist/track/track.view.html"
+        templateUrl: "js/components/tracklist/track/track.view.html",
+        scope: {
+            "ngModel": "="
+        },
+        bindToController: true
     }
 }

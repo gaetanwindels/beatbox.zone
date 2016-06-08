@@ -1,5 +1,5 @@
 <div ng-repeat="track in tracklist.tracklistService.getTracks() track by $index">
-    <track />
+    <track ng-model="track" />
 </div>
 <track style="opacity: 0.4;" ng-click="tracklist.tracklistService.addTrack()" />
 

@@ -10,4 +10,17 @@ track {
     display: block;
     border-bottom: 1px black solid;
     background-color: grey;
+    text-align: center;
+
+}
+
+track .fa {
+    font-size: 30px;
+    line-height: 50px;
+    margin: 0px 30px;
+    cursor: pointer;
+}
+
+.highlight {
+    color: #17E63E;
 }

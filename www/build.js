@@ -35472,16 +35472,45 @@ app.config(["$urlRouterProvider", function($urlRouterProvider) {
 
 angular.bootstrap(document.body, ["app"]);
 },{"./controller":13,"./states/playground/playground.module.js":16,"angular":3,"angular-ui-router":1}],5:[function(require,module,exports){
-module.exports = function() {
+module.exports = ["Track", function(Track) {
 
-}
+    if (!this.ngModel instanceof Track) {
+        this.ngModel = new Track();
+    }
+
+    this.service = this.ngModel;
+
+    this.toggleRecording = function() {
+        this.service.setRecording(!this.service.isRecording());
+    }
+
+    this.toggleLooping = function() {
+        this.service.setLooping(!this.service.isLooping());
+    }
+
+    this.togglePlay = function() {
+        if (this.service.isPlaying()) {
+            this.service.stop();
+        } else {
+            this.service.play();
+        }
+    }
+
+    //this.ngModel && this.ngModel.isLooping();
+
+
+}]
 },{}],6:[function(require,module,exports){
 module.exports = function() {
     return {
 
         controller: "TrackController",
         controllerAs: "track",
-        templateUrl: "js/components/tracklist/track/track.view.html"
+        templateUrl: "js/components/tracklist/track/track.view.html",
+        scope: {
+            "ngModel": "="
+        },
+        bindToController: true
     }
 }
 },{}],7:[function(require,module,exports){
@@ -35505,13 +35534,74 @@ trackModule.name = moduleName;
 
 module.exports = trackModule;
 },{"./track.controller":5,"./track.directive":6,"./track.service":8,"angular":3}],8:[function(require,module,exports){
-var Track = function() {
-    this.name = "hey";
-};
+module.exports = [function() {
 
-module.exports = function() {
+    var Track = function() {
+        this.playing = false;
+        this.recording = false;
+        this.looping = false;
+
+        this.isSong1 = true;
+    };
+
+    Track.prototype.isLooping = function() {
+        return this.looping;
+    }
+
+    Track.prototype.isPlaying = function() {
+        return this.playing;
+    }
+
+    Track.prototype.isRecording = function() {
+        return this.recording;
+    }
+
+    Track.prototype._setPlaying = function(playing) {
+        this.playing = playing;
+    }
+
+    Track.prototype.setRecording = function(recording) {
+        this.recording = recording;
+    }
+
+    Track.prototype.setLooping = function(looping) {
+        this.looping = looping;
+    }
+
+    Track.prototype.play = function() {
+        this._setPlaying(true);
+        var digit = this.isSong1 ? 1 : 2;
+        //this.sound = new Audio("assets/sound/sound" + digit + ".wav");
+        this.sound = new Audio("assets/sound/sound" + digit + ".wav");
+        this.sound.play();
+
+        this.sound.addEventListener("ended", function() {
+            if (!this.isLooping()) {
+                this.stop();
+            }
+        }.bind(this));
+
+        if (this.isLooping()) {
+            this.sound.addEventListener("ended", function() {
+
+                if (!this.isPlaying() || !this.isLooping()) return;
+
+                window.setTimeout(function() {
+                    this.sound.play();
+                }.bind(this), 20);
+            }.bind(this));
+        }
+    }
+
+    Track.prototype.stop = function() {
+        this._setPlaying(false);
+        if (this.sound) {
+            this.sound.pause();
+        }
+    }
+
     return Track;
-}
+}]
 },{}],9:[function(require,module,exports){
 module.exports = ["TracklistService", function(TracklistService) {
 
@@ -35561,6 +35651,7 @@ module.exports = ["Track", function(Track) {
 
     this.addTrack = function() {
         this.tracks.push(new Track());
+        this.tracks[this.tracks.length -1].isSong1 = (this.tracks.length & 1);
     }
 
     this.getTracks = function() {
@@ -35577,8 +35668,10 @@ var controller = ["$scope", function($scope) {
 
 module.exports = controller;
 },{}],14:[function(require,module,exports){
-arguments[4][5][0].apply(exports,arguments)
-},{"dup":5}],15:[function(require,module,exports){
+module.exports = function() {
+
+}
+},{}],15:[function(require,module,exports){
 module.exports = function() {
     return {
 
@@ -35621,5 +35714,5 @@ module.exports = ["$stateProvider", function($stateProvider) {
         });
 }]
 },{}],18:[function(require,module,exports){
-arguments[4][5][0].apply(exports,arguments)
-},{"dup":5}]},{},[4]);
+arguments[4][14][0].apply(exports,arguments)
+},{"dup":14}]},{},[4]);
