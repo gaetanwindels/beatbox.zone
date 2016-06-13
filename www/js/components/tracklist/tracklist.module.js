@@ -17,6 +17,9 @@ tracklistModule.name = moduleName;
 
 tracklistModule.directive("tracklist", tracklistDirective);
 tracklistModule.service("TracklistService", tracklistService);
+
+tracklistModule.service("Recorder", require("./../../shared/recorder/recorder.service"));
+
 tracklistModule.controller("TracklistController", tracklistController);
 
 module.exports = tracklistModule;
