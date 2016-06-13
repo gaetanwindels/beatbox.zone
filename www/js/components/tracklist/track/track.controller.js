@@ -7,7 +7,11 @@ module.exports = ["Track", function(Track) {
     this.service = this.ngModel;
 
     this.toggleRecording = function() {
-        this.service.setRecording(!this.service.isRecording());
+        if (!this.service.isRecording()) {
+            this.service.record();
+        } else {
+            this.service.stopRecording();
+        }
     }
 
     this.toggleLooping = function() {

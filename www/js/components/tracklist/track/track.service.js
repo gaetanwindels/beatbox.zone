@@ -1,4 +1,4 @@
-module.exports = [function() {
+module.exports = ["Recorder", function(Recorder) {
 
     var Track = function() {
         this.playing = false;
@@ -26,7 +26,7 @@ module.exports = [function() {
         this.playing = playing;
     }
 
-    Track.prototype.setRecording = function(recording) {
+    Track.prototype._setRecording = function(recording) {
         this.recording = recording;
     }
 
@@ -42,11 +42,25 @@ module.exports = [function() {
         return this.frequency;
     }
 
+    Track.prototype.record = function() {
+        Recorder.record();
+        this._setRecording(true);
+    }
+
+    Track.prototype.stopRecording = function() {
+        Recorder.stop().then(function(e) {
+            this._setRecording(false);
+            this.sound = new Audio();
+            this.sound.src = e;
+            console.log(e);
+        }.bind(this));
+    }
+
     Track.prototype.play = function() {
+        if (!this.sound) return;
+
         this._setPlaying(true);
-        var digit = this.isSong1 ? 1 : 2;
         //this.sound = new Audio("assets/sound/sound" + digit + ".wav");
-        this.sound = new Audio("assets/sound/sound" + digit + ".wav");
         this.sound.play();
 
         this.sound.addEventListener("ended", function() {
