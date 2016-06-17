@@ -34,6 +34,13 @@ module.exports = ["Recorder", function(Recorder) {
         this.looping = looping;
     }
 
+/*    Track.prototype.cut = function() {
+        Recorder.cut(100).then(function(e) {
+            this.sound = new Audio();
+            this.sound.src = e;
+        }.bind(this));
+    }*/
+
     Track.prototype.setFrequency = function(frequency) {
         this.frequency = frequency;
     }
@@ -43,8 +50,11 @@ module.exports = ["Recorder", function(Recorder) {
     }
 
     Track.prototype.record = function() {
-        Recorder.record();
         this._setRecording(true);
+        setTimeout(function() {
+            Recorder.record();
+        }.bind(this), 200);
+
     }
 
     Track.prototype.stopRecording = function() {
@@ -52,7 +62,6 @@ module.exports = ["Recorder", function(Recorder) {
             this._setRecording(false);
             this.sound = new Audio();
             this.sound.src = e;
-            console.log(e);
         }.bind(this));
     }
 

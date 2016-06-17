@@ -1,4 +1,7 @@
 <div>
+
+    <i ng-click="track.service.cut()" class="fa fa-cut"></i>
+
     <i ng-class="{ 'fa-microphone-slash' : track.service.isRecording(),
                    'fa-microphone' : !track.service.isRecording()}"
        ng-click="track.toggleRecording()"
