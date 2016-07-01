@@ -1,4 +1,4 @@
-module.exports = ["Track", function(Track) {
+module.exports = ["$scope", "Track", function($scope, Track) {
 
     if (!this.ngModel instanceof Track) {
         this.ngModel = new Track();

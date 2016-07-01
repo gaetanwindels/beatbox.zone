@@ -1,26 +1,97 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: black;
 }
 
 track {
-    padding: 5px;
+    display: block;
+}
+.track-container {
     width: 100%;
     height: 50px;
     display: block;
     border-bottom: 1px black solid;
     background-color: grey;
     text-align: center;
+    background: linear-gradient(to bottom, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+    background: linear-gradient(to left, #43cea2 , #185a9d);
+}
 
+.track-container {
+    padding: 15px;
+}
+
+.waveform {
+    height: 30px;
+    background-color: white;
+    border-bottom: 1px black solid;
 }
 
 track .fa {
     font-size: 30px;
     line-height: 50px;
-    margin: 0px 30px;
     cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-color: grey;
+    margin: 0px 12px;
+    border-radius: 10%;
+    box-shadow: inset 0px 0px 6px 0px #555555, 0px 0px 4px 1px #000000;
+    background: linear-gradient(to bottom, rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%);
 }
 
-.highlight {
-    color: #17E63E;
+track .fa.selected {
+    background: #67ff67;
+}
+
+track .fa.fa-microphone-slash.selected {
+    /*color: red;*/
+    background: red;
+}
+
+/**
+ * Waveform cursors
+ */
+.wave-container {
+    height: 30px;
+    position: relative;
+}
+
+waveform-cursors {
+    display: block;
+    height: 100%;
+}
+
+.wave-cursor {
+    background-color: grey;
+    opacity: 0.7;
+    position: absolute;
+    top:0;
+    width: 200px;
+    height: 100%;
+}
+
+.wave-cursor-left {
+    border-right: 1px black solid;
+    left: 0;
+}
+
+.wave-cursor-right {
+    border-left: 1px black solid;
+    right: 0;
+}
+
+.wave-cursor-container {
+    position: relative;
+    height: 100%;
+    z-index: 1000;
+}
+
+.waveform {
+    height: 30px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px black solid;
+    position: absolute;
 }

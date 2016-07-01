@@ -1,14 +1,21 @@
-module.exports = ["Recorder", function(Recorder) {
+var WaveSurfer = require("wavesurfer.js");
+
+module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
+
+    var counter = 0;
 
     var Track = function() {
+        this.idContainer = "waveform" + counter++;
         this.playing = false;
         this.recording = false;
         this.looping = false;
 
         this.frequency = 50;
-
-        this.isSong1 = true;
     };
+
+    Track.prototype.getContainerId = function() {
+        return this.idContainer;
+    }
 
     Track.prototype.isLooping = function() {
         return this.looping;
@@ -58,19 +65,34 @@ module.exports = ["Recorder", function(Recorder) {
     }
 
     Track.prototype.stopRecording = function() {
-        Recorder.stop().then(function(e) {
+        Recorder.stop().then(function(blob) {
             this._setRecording(false);
             this.sound = new Audio();
-            this.sound.src = e;
+            this.sound.src = window.URL.createObjectURL(blob);
+
+            if(!this.wavesurfer) {
+                this.wavesurfer = WaveSurfer.create({
+                    container: "#" + this.idContainer,
+                    waveColor: 'blue',
+                    fillParent: true,
+                    height: 30
+                });
+            }
+            //this.wavesurfer.load(window.URL.createObjectURL(blob));
+            this.wavesurfer.loadBlob(blob);
+
         }.bind(this));
     }
 
     Track.prototype.play = function() {
-        if (!this.sound) return;
+        if (!this.sound || !this.wavesurfer) return;
+
+        this.sound.play(100);
 
         this._setPlaying(true);
         //this.sound = new Audio("assets/sound/sound" + digit + ".wav");
-        this.sound.play();
+
+        //this.sound.play();
 
         this.sound.addEventListener("ended", function() {
             if (!this.isLooping()) {
@@ -82,10 +104,10 @@ module.exports = ["Recorder", function(Recorder) {
             this.sound.addEventListener("ended", function() {
 
                 if (!this.isPlaying() || !this.isLooping()) return;
-
-                window.setTimeout(function() {
+                this.sound.play();
+               /* window.setTimeout(function() {
                     this.sound.play();
-                }.bind(this), this.getFrequency());
+                }.bind(this), this.getFrequency());*/
             }.bind(this));
         }
     }
