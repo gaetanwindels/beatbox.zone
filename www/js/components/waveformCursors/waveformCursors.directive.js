@@ -17,12 +17,11 @@ module.exports = function() {
             scope.ngModel.left = 0;
             scope.ngModel.right = 0;
 
-            elmt.on("mousedown", function (e) {
+            elmt.on("click", function (e) {
                 scope.clicked = true;
                 var left = e.currentTarget.getElementsByClassName("wave-cursor-left")[0];
                 var right = e.currentTarget.getElementsByClassName("wave-cursor-right")[0];
 
-                debugger;
                 if (Math.abs(e.clientX - left.getBoundingClientRect().right) <
                     Math.abs(e.clientX - right.getBoundingClientRect().left)) {
                     left.style.width = e.clientX + "px";
