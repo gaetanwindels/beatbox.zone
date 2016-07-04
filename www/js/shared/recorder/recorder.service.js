@@ -1,7 +1,6 @@
 var Recorder = require("recorderjs");
 
 module.exports = ["$q", function($q) {
-
     window.AudioContext = window.AudioContext ||
         window.webkitAudioContext;
 

@@ -6,6 +6,12 @@ module.exports = ["$scope", "Track", function($scope, Track) {
 
     this.service = this.ngModel;
 
+    this.cursors = {};
+
+    if (this.service) {
+        this.service.setCursors(this.cursors);
+    }
+
     this.toggleRecording = function() {
         if (!this.service.isRecording()) {
             this.service.record();

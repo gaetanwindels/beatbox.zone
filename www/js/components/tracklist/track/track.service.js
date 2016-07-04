@@ -9,6 +9,7 @@ module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
         this.playing = false;
         this.recording = false;
         this.looping = false;
+        this.cursors = {};
 
         this.frequency = 50;
     };
@@ -75,7 +76,7 @@ module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
                     container: "#" + this.idContainer,
                     waveColor: 'blue',
                     fillParent: true,
-                    height: 30
+                    height: 70
                 });
             }
             //this.wavesurfer.load(window.URL.createObjectURL(blob));
@@ -84,10 +85,30 @@ module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
         }.bind(this));
     }
 
+    Track.prototype.setCursors = function(cursors) {
+        this.cursors = cursors;
+    }
+
     Track.prototype.play = function() {
         if (!this.sound || !this.wavesurfer) return;
 
-        this.sound.play(100);
+        if (this.cursors && this.cursors.left) {
+            this.sound.currentTime = this.sound.duration * this.cursors.left;
+        }
+
+        this.sound.play();
+
+        this.timerCurrent = window.setInterval(function() {
+            if (this.cursors && this.cursors.right &&
+                this.sound.currentTime >= this.sound.duration - this.sound.duration * this.cursors.right) {
+
+                if (this.isLooping()) {
+                    this.sound.currentTime = this.sound.duration * this.cursors.left;
+                } else {
+                    this.stop();
+                }
+            }
+        }.bind(this), 10);
 
         this._setPlaying(true);
         //this.sound = new Audio("assets/sound/sound" + digit + ".wav");
@@ -104,6 +125,9 @@ module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
             this.sound.addEventListener("ended", function() {
 
                 if (!this.isPlaying() || !this.isLooping()) return;
+                if (this.cursors && this.cursors.left) {
+                    this.sound.currentTime = this.sound.duration * this.cursors.left;
+                }
                 this.sound.play();
                /* window.setTimeout(function() {
                     this.sound.play();
@@ -116,6 +140,7 @@ module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
         this._setPlaying(false);
         if (this.sound) {
             this.sound.pause();
+            window.clearInterval(this.timerCurrent);
         }
     }
 

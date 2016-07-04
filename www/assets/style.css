@@ -23,7 +23,7 @@ track {
 }
 
 .waveform {
-    height: 30px;
+    height: 70px;
     background-color: white;
     border-bottom: 1px black solid;
 }
@@ -54,7 +54,7 @@ track .fa.fa-microphone-slash.selected {
  * Waveform cursors
  */
 .wave-container {
-    height: 30px;
+    height: 70px;
     position: relative;
 }
 
@@ -89,7 +89,7 @@ waveform-cursors {
 }
 
 .waveform {
-    height: 30px;
+    height: 70px;
     width: 100%;
     background-color: white;
     border-bottom: 1px black solid;
