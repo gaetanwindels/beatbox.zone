@@ -22,16 +22,17 @@ module.exports = function() {
                 var left = e.currentTarget.getElementsByClassName("wave-cursor-left")[0];
                 var right = e.currentTarget.getElementsByClassName("wave-cursor-right")[0];
 
+                debugger;
                 if (Math.abs(e.clientX - left.getBoundingClientRect().right) <
                     Math.abs(e.clientX - right.getBoundingClientRect().left)) {
                     left.style.width = e.clientX + "px";
                     scope.$apply(function() {
-                        scope.ngModel.left = e.clientX / screen.width;
+                        scope.ngModel.left = e.clientX / document.body.clientWidth;
                     });
                 } else {
-                    right.style.width = (screen.width - e.clientX) + "px";
+                    right.style.width = (document.body.clientWidth - e.clientX) + "px";
                     scope.$apply(function() {
-                        scope.ngModel.right = 1 - right.getBoundingClientRect().left / screen.width;
+                        scope.ngModel.right = 1 - right.getBoundingClientRect().left / document.body.clientWidth;
                     });
                 }
             });

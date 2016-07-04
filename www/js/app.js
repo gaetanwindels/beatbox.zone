@@ -1,7 +1,10 @@
 var angular = require("angular");
+var attachFastClick = require('fastclick');
 var controller = require("./controller");
 
 require("angular-ui-router");
+
+attachFastClick(document.body);
 
 var modules = [
     // internal modules
