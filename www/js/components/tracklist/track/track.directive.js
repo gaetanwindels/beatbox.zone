@@ -5,8 +5,10 @@ module.exports = function() {
         controllerAs: "track",
         templateUrl: "js/components/tracklist/track/track.view.html",
         scope: {
-            "ngModel": "="
+            "ngModel": "=",
+            "onClose": "&"
         },
-        bindToController: true
+        bindToController: true,
+        transclude: true
     }
 }

@@ -14,6 +14,8 @@
 
         <i ng-class="{ 'selected': track.service.isLooping() }" class="fa fa-refresh" ng-click="track.toggleLooping()" aria-hidden="true"></i>
 
+        <i ng-click="track.onClose()" class="fa fa-trash" aria-hidden="true"></i>
+
 <!--    <i ng-click="track.lowerFrequency()" class="fa fa-minus" aria-hidden="true"></i>
     {{ track.service.getFrequency() }}
     <i ng-click="track.increaseFrequency()" class="fa fa-plus" aria-hidden="true"></i>-->
@@ -24,5 +26,4 @@
         </div>
         <waveform-cursors ng-model="track.cursors"></waveform-cursors>
     </div>
-
 </div>

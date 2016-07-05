@@ -1,12 +1,13 @@
 <div ng-repeat="track in tracklist.tracklistService.getTracks() track by $index">
-    <track ng-model="track" />
+    <my-track on-close="tracklist.close($index)" class="track" ng-model="track">
+    </my-track>
 </div>
 <div ng-click="tracklist.tracklistService.addTrack()">
-    <track style="pointer-events: none;opacity: 0.4;"  />
+    <my-track class="track" style="pointer-events: none;opacity: 0.4;">
+    </my-track>
 </div>
 
 <div class="bottom">
-
 </div>
 
 

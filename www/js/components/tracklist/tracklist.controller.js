@@ -8,4 +8,7 @@ module.exports = ["TracklistService", function(TracklistService) {
         this.tracklistService.addTrack();
     }
 
+    this.close = function(index) {
+        this.tracklistService.removeTrack(index);
+    }
 }]

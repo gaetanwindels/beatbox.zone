@@ -4,7 +4,7 @@ body {
     background-color: black;
 }
 
-track {
+.track {
     display: block;
 }
 
@@ -38,7 +38,7 @@ tracklist {
     border-bottom: 1px black solid;
 }
 
-track .fa {
+.track .fa {
     font-size: 50px;
     line-height: 100px;
     cursor: pointer;
@@ -50,11 +50,17 @@ track .fa {
     background: linear-gradient(to bottom, rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%);
 }
 
-track .fa.selected {
+.track .fa.selected {
     background: #67ff67;
 }
+.track .fa.fa-trash {
+    background: none;
+    border: none;
+    box-shadow: none;
+    float: right;
+}
 
-track .fa.fa-microphone-slash.selected {
+.track .fa.fa-microphone-slash.selected {
     /*color: red;*/
     background: red;
 }

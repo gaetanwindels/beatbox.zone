@@ -4,7 +4,11 @@ module.exports = ["Track", function(Track) {
 
     this.addTrack = function() {
         this.tracks.push(new Track());
-        this.tracks[this.tracks.length -1].isSong1 = (this.tracks.length & 1);
+    }
+
+    this.removeTrack = function(i) {
+        this.tracks.splice(i, 1);
+        console.log(this.tracks);
     }
 
     this.getTracks = function() {

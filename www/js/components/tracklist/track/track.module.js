@@ -10,7 +10,7 @@ var moduleName = "track";
 
 var trackModule = angular.module(moduleName, modules);
 
-trackModule.directive("track", trackDirective);
+trackModule.directive("myTrack", trackDirective);
 trackModule.factory("Track", trackService);
 trackModule.controller("TrackController", trackController);
 
