@@ -67,17 +67,16 @@ waveform-cursors {
     opacity: 0.7;
     position: absolute;
     top:0;
-    width: 200px;
     height: 100%;
 }
 
 .wave-cursor-left {
-    border-right: 1px black solid;
+    border-right: 3px black solid;
     left: 0;
 }
 
 .wave-cursor-right {
-    border-left: 1px black solid;
+    border-left: 3px black solid;
     right: 0;
 }
 
@@ -85,6 +84,7 @@ waveform-cursors {
     position: relative;
     height: 100%;
     z-index: 1000;
+    box-shadow: inset 0px 0px 6px 2px #555555;
 }
 
 .waveform {

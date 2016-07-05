@@ -1,6 +1,6 @@
 var WaveSurfer = require("wavesurfer.js");
 
-module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
+module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recorder) {
 
     var counter = 0;
 
@@ -90,7 +90,9 @@ module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
     }
 
     Track.prototype.play = function() {
-        if (!this.sound || !this.wavesurfer) return;
+        var deferred = $q.defer();
+
+        if (!this.sound || !this.wavesurfer) deferred.reject("no sound");
 
         if (this.cursors && this.cursors.left) {
             this.sound.currentTime = this.sound.duration * this.cursors.left;
@@ -106,6 +108,7 @@ module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
                     this.sound.currentTime = this.sound.duration * this.cursors.left;
                 } else {
                     this.stop();
+                    deferred.resolve("hi");
                 }
             }
         }.bind(this), 10);
@@ -118,6 +121,7 @@ module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
         this.sound.addEventListener("ended", function() {
             if (!this.isLooping()) {
                 this.stop();
+                deferred.resolve("hi");
             }
         }.bind(this));
 
@@ -134,6 +138,8 @@ module.exports = ["$rootScope", "Recorder", function($rootScope, Recorder) {
                 }.bind(this), this.getFrequency());*/
             }.bind(this));
         }
+
+        return deferred.promise;
     }
 
     Track.prototype.stop = function() {

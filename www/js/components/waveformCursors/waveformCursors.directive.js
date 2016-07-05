@@ -19,8 +19,10 @@ module.exports = function() {
             scope.ngModel.left = 0;
             scope.ngModel.right = 0;
 
-            this.left = document.getElementsByClassName("wave-cursor-left")[0];
-            this.right = document.getElementsByClassName("wave-cursor-right")[0];
+            this.left = elmt[0].getElementsByClassName("wave-cursor-left")[0];
+            this.right = elmt[0].getElementsByClassName("wave-cursor-right")[0];
+           // this.left.style.width = (scope.ngModel.left * document.body.clientWidth) + "px";
+            //this.right.style.width = (scope.ngModel.right * document.body.clientWidth) + "px";
 
             function detectCursor(e) {
                 scope.rightClicked = false;

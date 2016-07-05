@@ -28,7 +28,10 @@ module.exports = ["$scope", "Track", function($scope, Track) {
         if (this.service.isPlaying()) {
             this.service.stop();
         } else {
-            this.service.play();
+            var result = this.service.play();
+            result.then(function() {
+                //$scope.$apply();
+            });
         }
     }
 
