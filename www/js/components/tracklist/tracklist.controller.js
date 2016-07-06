@@ -1,4 +1,4 @@
-module.exports = ["TracklistService", function(TracklistService) {
+module.exports = ["$scope", "TracklistService", function($scope, TracklistService) {
 
     this.tracklistService = TracklistService;
 

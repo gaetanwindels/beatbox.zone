@@ -7,8 +7,8 @@ module.exports = ["Track", function(Track) {
     }
 
     this.removeTrack = function(i) {
+        this.tracks[i].destroy();
         this.tracks.splice(i, 1);
-        console.log(this.tracks);
     }
 
     this.getTracks = function() {

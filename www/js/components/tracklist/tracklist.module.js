@@ -2,6 +2,7 @@ var angular = require("angular");
 
 var tracklistDirective = require("./tracklist.directive");
 var waveformCursorsDirective = require("./../waveformCursors/waveformCursors.directive");
+var waveSurferDirective = require("./../wavesurfer/waveSurfer.directive");
 
 var tracklistService = require("./tracklist.service");
 var tracklistController = require("./tracklist.controller");
@@ -19,6 +20,7 @@ tracklistModule.name = moduleName;
 
 tracklistModule.directive("tracklist", tracklistDirective);
 tracklistModule.directive("waveformCursors", waveformCursorsDirective);
+tracklistModule.directive("wavesurfer", waveSurferDirective);
 tracklistModule.service("TracklistService", tracklistService);
 
 tracklistModule.service("Recorder", require("./../../shared/recorder/recorder.service"));

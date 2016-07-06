@@ -5,7 +5,7 @@ module.exports = function() {
         controllerAs: "track",
         templateUrl: "js/components/tracklist/track/track.view.html",
         scope: {
-            "ngModel": "=",
+            "service": "=ngModel",
             "onClose": "&"
         },
         bindToController: true,

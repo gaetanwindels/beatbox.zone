@@ -65,13 +65,21 @@ module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recor
 
     }
 
+    Track.prototype.destroy = function() {
+        this.wavesurfer && this.wavesurfer.destroy();
+    }
+
     Track.prototype.stopRecording = function() {
         Recorder.stop().then(function(blob) {
             this._setRecording(false);
             this.sound = new Audio();
             this.sound.src = window.URL.createObjectURL(blob);
+            this.blob = blob;
 
-            if(!this.wavesurfer) {
+            //if(!this.wavesurfer)
+            //this.wavesurfer && this.wavesurfer.destroy();f
+
+            /*if (!this.wavesurfer) {
                 this.wavesurfer = WaveSurfer.create({
                     container: "#" + this.idContainer,
                     waveColor: 'blue',
@@ -79,8 +87,9 @@ module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recor
                     height: 70
                 });
             }
+
             //this.wavesurfer.load(window.URL.createObjectURL(blob));
-            this.wavesurfer.loadBlob(blob);
+            this.wavesurfer.loadBlob(blob);*/
 
         }.bind(this));
     }

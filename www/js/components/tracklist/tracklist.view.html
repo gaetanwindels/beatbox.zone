@@ -1,5 +1,5 @@
-<div ng-repeat="track in tracklist.tracklistService.getTracks() track by $index">
-    <my-track on-close="tracklist.close($index)" class="track" ng-model="track">
+<div ng-repeat="trackObj in tracklist.tracklistService.getTracks() track by $index">
+    <my-track on-close="tracklist.close($index)" class="track" ng-model="trackObj">
     </my-track>
 </div>
 <div ng-click="tracklist.tracklistService.addTrack()">

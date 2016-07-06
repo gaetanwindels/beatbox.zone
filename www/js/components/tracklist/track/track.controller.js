@@ -4,7 +4,7 @@ module.exports = ["$scope", "Track", function($scope, Track) {
         this.ngModel = new Track();
     }
 
-    this.service = this.ngModel;
+    //this.service = this.ngModel;
 
     this.cursors = {};
 
