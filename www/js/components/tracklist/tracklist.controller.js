@@ -6,6 +6,8 @@ module.exports = ["$scope", "TracklistService", function($scope, TracklistServic
 
     this.addTrack = function() {
         this.tracklistService.addTrack();
+        var objDiv = document.getElementsByClassName("tracklist-container")[0];
+        objDiv.scrollTop = objDiv.scrollHeight;
     }
 
     this.close = function(index) {

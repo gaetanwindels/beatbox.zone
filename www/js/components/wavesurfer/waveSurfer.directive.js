@@ -22,8 +22,8 @@ module.exports = function() {
             var wavesurfer = WaveSurfer.create({
                 container: elmt[0],
                 waveColor: 'blue',
-                fillParent: true,
-                height: 70
+                height: 70,
+                fillParent: true
             });
 
             if (scope.blob instanceof Blob) {

@@ -9,9 +9,13 @@ body {
 }
 
 tracklist {
+
+}
+
+.tracklist-container {
     position: fixed;
     top: 0;
-    bottom: 150px;
+    bottom: 155px;
     right: 0;
     left: 0;
     overflow: auto;
@@ -113,7 +117,7 @@ waveform-cursors {
     position: absolute;
 }
 
-.bottom {
+.footer {
     position: fixed;
     bottom: 0;
     width: 100%;
