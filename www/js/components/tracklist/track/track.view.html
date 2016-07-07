@@ -10,12 +10,10 @@
                        'fa-microphone' : !track.service.isRecording()}"
            ng-click="track.toggleRecording()"
            class="fa" aria-hidden="true"></i>
-        <!--<i class="fa fa-stop" aria-hidden="true"></i>-->
         <i ng-class="{ 'fa-play' : !track.service.isPlaying(),
                        'fa-play selected' : track.service.isPlaying()}"
            ng-click="track.togglePlay()"
            class="fa" aria-hidden="true"></i>
-
         <i ng-class="{ 'selected': track.service.isLooping() }" class="fa fa-refresh" ng-click="track.toggleLooping()" aria-hidden="true"></i>
 
         <i ng-click="track.onClose()" class="fa fa-trash" aria-hidden="true"></i>

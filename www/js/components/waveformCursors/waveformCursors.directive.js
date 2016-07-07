@@ -16,8 +16,8 @@ module.exports = function() {
             scope.rightClicked = false;
             scope.leftClicked = false;
 
-            scope.ngModel.left = 0;
-            scope.ngModel.right = 0;
+            /*scope.ngModel.left = 0;
+            scope.ngModel.right = 0;*/
 
             this.left = elmt[0].getElementsByClassName("wave-cursor-left")[0];
             this.right = elmt[0].getElementsByClassName("wave-cursor-right")[0];

@@ -6,7 +6,10 @@ module.exports = ["$scope", "Track", function($scope, Track) {
 
     //this.service = this.ngModel;
 
-    this.cursors = {};
+    this.cursors = {
+        left: 0,
+        right: 0
+    };
 
     if (this.service) {
         this.service.setCursors(this.cursors);
@@ -29,14 +32,15 @@ module.exports = ["$scope", "Track", function($scope, Track) {
             this.service.stop();
         } else {
             var result = this.service.play();
-            result.then(function() {
-                //$scope.$apply();
+            result.then(function(string) {
+                console.log("hi");
+            }).catch(function(error) {
+                console.log(error);
             });
         }
     }
 
     this.toggleSelect = function() {
-        debugger;
         this.service.toggleSelect();
     }
 

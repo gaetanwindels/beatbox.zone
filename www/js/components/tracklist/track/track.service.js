@@ -112,7 +112,10 @@ module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recor
     Track.prototype.play = function() {
         var deferred = $q.defer();
 
-        if (!this.sound || !this.wavesurfer) deferred.reject("no sound");
+        if (!this.sound) {
+            deferred.reject("no sound");
+            return deferred.promise;
+        }
 
         if (this.cursors && this.cursors.left) {
             this.sound.currentTime = this.sound.duration * this.cursors.left;
@@ -128,7 +131,7 @@ module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recor
                     this.sound.currentTime = this.sound.duration * this.cursors.left;
                 } else {
                     this.stop();
-                    deferred.resolve("hi");
+                    deferred.resolve();
                 }
             }
         }.bind(this), 10);
@@ -141,7 +144,7 @@ module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recor
         this.sound.addEventListener("ended", function() {
             if (!this.isLooping()) {
                 this.stop();
-                deferred.resolve("hi");
+                deferred.resolve();
             }
         }.bind(this));
 
