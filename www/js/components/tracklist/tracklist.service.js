@@ -15,4 +15,13 @@ module.exports = ["Track", function(Track) {
         return this.tracks;
     }
 
+    this.playSelected = function() {
+        for (var i = 0; i < this.tracks.length; i++) {
+            if (this.tracks[i].isSelected()) {
+                this.tracks[i].stop();
+                this.tracks[i].play();
+            }
+        }
+    }
+
 }]

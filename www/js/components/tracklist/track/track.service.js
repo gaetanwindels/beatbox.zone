@@ -10,12 +10,22 @@ module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recor
         this.recording = false;
         this.looping = false;
         this.cursors = {};
+        this.selected = false;
 
         this.frequency = 50;
     };
 
     Track.prototype.getContainerId = function() {
         return this.idContainer;
+    }
+
+    Track.prototype.toggleSelect = function() {
+        return this.selected = !this.selected;
+        console.log(this.selected);
+    }
+
+    Track.prototype.isSelected = function() {
+        return this.selected;
     }
 
     Track.prototype.isLooping = function() {
@@ -66,6 +76,7 @@ module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recor
     }
 
     Track.prototype.destroy = function() {
+        this.stop();
         this.wavesurfer && this.wavesurfer.destroy();
     }
 

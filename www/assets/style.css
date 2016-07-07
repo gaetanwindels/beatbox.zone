@@ -61,7 +61,8 @@ tracklist {
     background: none;
     border: none;
     box-shadow: none;
-    float: right;
+    position: absolute;
+    right: 0;
 }
 
 .track .fa.fa-microphone-slash.selected {
@@ -124,5 +125,41 @@ waveform-cursors {
     height: 150px;
     background-color: grey;
     border-top: 5px white solid;
+    text-align: center;
+}
 
+.btn-select {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    width: 70px;
+    margin-left: 20px;
+    height: 70px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-color: #f7f7f7;
+    border: 3px black solid;
+    line-height: 120px;
+    box-shadow: inset 0px 0px 8px 0px #000000;
+}
+
+.btn-select:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60%;
+    margin-left: 17%;
+    height: 60%;
+    margin-top: 17%;
+    border-radius: 50%;
+    /* background-color: #0043ff; */
+    line-height: 120px;
+    border: 2px black solid;
+    box-shadow: inset 0px 0px 8px 2px #000, 0px 0px 4px 0px #000;
+}
+
+.btn-select.selected:after {
+    background-color: #4bff00;
 }

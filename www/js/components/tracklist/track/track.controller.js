@@ -35,6 +35,11 @@ module.exports = ["$scope", "Track", function($scope, Track) {
         }
     }
 
+    this.toggleSelect = function() {
+        debugger;
+        this.service.toggleSelect();
+    }
+
     this.lowerFrequency = function() {
         var calcFrequency = this.service.getFrequency() - 10;
         this.service.setFrequency(Math.max(0, calcFrequency));

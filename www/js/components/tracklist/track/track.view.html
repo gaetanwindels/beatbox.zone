@@ -2,6 +2,10 @@
 
    <!-- <i ng-click="track.service.cut()" class="fa fa-cut"></i>-->
     <div class="track-container">
+
+        <div ng-click="track.service.toggleSelect()" ng-class="{ 'selected' : track.service.isSelected() }"
+        class="btn-select"></div>
+
         <i ng-class="{ 'fa-microphone-slash selected' : track.service.isRecording(),
                        'fa-microphone' : !track.service.isRecording()}"
            ng-click="track.toggleRecording()"
