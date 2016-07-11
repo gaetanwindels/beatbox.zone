@@ -1,6 +1,7 @@
 var WaveSurfer = require("wavesurfer.js");
 
-module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recorder) {
+module.exports = ["$q", "$rootScope", "Recorder", "ColorGenerator",
+          function($q,   $rootScope,   Recorder,   ColorGenerator) {
 
     var counter = 0;
 
@@ -11,6 +12,7 @@ module.exports = ["$q", "$rootScope", "Recorder", function($q, $rootScope, Recor
         this.looping = false;
         this.cursors = {};
         this.selected = false;
+        this.color = ColorGenerator.pickColor();
 
         this.frequency = 50;
     };

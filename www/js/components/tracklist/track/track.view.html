@@ -1,7 +1,7 @@
 <div>
 
    <!-- <i ng-click="track.service.cut()" class="fa fa-cut"></i>-->
-    <div class="track-container">
+    <div class="track-container" ng-style="{ 'background': track.service.color }">
 
         <div ng-click="track.service.toggleSelect()" ng-class="{ 'selected' : track.service.isSelected() }"
         class="btn-select"></div>

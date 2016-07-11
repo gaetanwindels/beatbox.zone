@@ -9,7 +9,8 @@ var tracklistController = require("./tracklist.controller");
 
 var moduleName = "tracklist";
 var modules = [
-    require("./track/track.module").name
+    require("./track/track.module").name,
+    require("./../../shared/shared.module").name,
 ];
 
 var moduleName = "tracklist";
@@ -22,8 +23,6 @@ tracklistModule.directive("tracklist", tracklistDirective);
 tracklistModule.directive("waveformCursors", waveformCursorsDirective);
 tracklistModule.directive("wavesurfer", waveSurferDirective);
 tracklistModule.service("TracklistService", tracklistService);
-
-tracklistModule.service("Recorder", require("./../../shared/recorder/recorder.service"));
 
 tracklistModule.controller("TracklistController", tracklistController);
 
