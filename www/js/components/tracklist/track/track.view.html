@@ -1,5 +1,4 @@
 <div>
-
    <!-- <i ng-click="track.service.cut()" class="fa fa-cut"></i>-->
     <div class="track-container" ng-style="{ 'background': track.service.color }">
 
@@ -9,14 +8,23 @@
         <i ng-class="{ 'fa-microphone-slash selected' : track.service.isRecording(),
                        'fa-microphone' : !track.service.isRecording()}"
            ng-click="track.toggleRecording()"
-           class="fa" aria-hidden="true"></i>
+           class="fa btn" aria-hidden="true"></i>
         <i ng-class="{ 'fa-play' : !track.service.isPlaying(),
                        'fa-play selected' : track.service.isPlaying()}"
            ng-click="track.togglePlay()"
-           class="fa" aria-hidden="true"></i>
-        <i ng-class="{ 'selected': track.service.isLooping() }" class="fa fa-refresh" ng-click="track.toggleLooping()" aria-hidden="true"></i>
+           class="fa btn" aria-hidden="true"></i>
+        <i ng-class="{ 'selected': track.service.isLooping() }" class="btn fa fa-refresh" ng-click="track.toggleLooping()" aria-hidden="true"></i>
 
-        <i ng-click="track.onClose()" class="fa fa-trash" aria-hidden="true"></i>
+        <i ng-click="track.onClose()" class="btn fa fa-trash" aria-hidden="true"></i>
+
+        <div style="    display: inline-block;
+    position: absolute;
+    right: 80px;
+    line-height: 110px;">
+            <i class="fa fa-volume-up" aria-hidden="true"></i>
+            <rzslider rz-slider-model="track.service.volume" rz-slider-options="track.sliderOptions"></rzslider>
+        </div>
+
 
 <!--    <i ng-click="track.lowerFrequency()" class="fa fa-minus" aria-hidden="true"></i>
     {{ track.service.getFrequency() }}
@@ -26,7 +34,7 @@
     <div class="wave-container">
        <!-- <div id="{{ track.service.getContainerId() }}" class="waveform">
         </div>-->
-        <wavesurfer blob="track.service.blob" class="waveform"></wavesurfer>
+        <wavesurfer blob="track.service.blob" color="track.service.color" class="waveform"></wavesurfer>
         <waveform-cursors ng-model="track.service.cursors"></waveform-cursors>
     </div>
 </div>

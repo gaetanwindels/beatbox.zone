@@ -4,7 +4,9 @@ var trackDirective = require("./track.directive");
 var trackService = require("./track.service");
 var trackController = require("./track.controller");
 
-var modules = [];
+var modules = [
+    require("angularjs-slider")
+];
 
 var moduleName = "track";
 

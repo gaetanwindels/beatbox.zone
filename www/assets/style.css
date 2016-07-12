@@ -39,7 +39,7 @@ tracklist {
     border-bottom: 1px black solid;
 }
 
-.track .fa {
+.track .btn {
     font-size: 50px;
     line-height: 100px;
     cursor: pointer;
@@ -58,7 +58,7 @@ tracklist {
     border: none;
     box-shadow: none;
     position: absolute;
-    right: 0;
+    right: -16;
 }
 
 .track .fa.fa-microphone-slash.selected {
@@ -129,7 +129,7 @@ waveform-cursors {
     position: absolute;
     left: 0;
     width: 70px;
-    margin-left: 20px;
+    margin-left: 8px;
     height: 70px;
     margin-top: 14px;
     border-radius: 50%;
@@ -158,4 +158,19 @@ waveform-cursors {
 
 .btn-select.selected:after {
     background-color: #4bff00;
+}
+
+.track .fa.fa-volume-up {
+    font-size: 30px;
+}
+
+div.rzslider {
+    width: 150px;
+    vertical-align: super;
+    margin: 0;
+    margin-left: 10px;
+}
+
+div .rzslider .rz-pointer {
+    background-color: #000000;
 }

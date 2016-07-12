@@ -3,8 +3,17 @@ module.exports = ["$scope", "Track", function($scope, Track) {
     if (!this.ngModel instanceof Track) {
         this.ngModel = new Track();
     }
-
     //this.service = this.ngModel;
+    //this.volume = this.service.volume;
+
+    this.sliderOptions =  {
+        floor: 0,
+        ceil: 1,
+        step: 0.05,
+        precision: 1,
+        hidePointerLabels: true,
+        hideLimitLabels: true,
+    }
 
     this.cursors = {
         left: 0,

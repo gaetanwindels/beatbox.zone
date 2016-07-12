@@ -13,6 +13,7 @@ module.exports = ["$q", "$rootScope", "Recorder", "ColorGenerator",
         this.cursors = {};
         this.selected = false;
         this.color = ColorGenerator.pickColor();
+        this.volume = 0.5;
 
         this.frequency = 50;
     };
@@ -23,7 +24,6 @@ module.exports = ["$q", "$rootScope", "Recorder", "ColorGenerator",
 
     Track.prototype.toggleSelect = function() {
         return this.selected = !this.selected;
-        console.log(this.selected);
     }
 
     Track.prototype.isSelected = function() {
@@ -54,13 +54,6 @@ module.exports = ["$q", "$rootScope", "Recorder", "ColorGenerator",
         this.looping = looping;
     }
 
-/*    Track.prototype.cut = function() {
-        Recorder.cut(100).then(function(e) {
-            this.sound = new Audio();
-            this.sound.src = e;
-        }.bind(this));
-    }*/
-
     Track.prototype.setFrequency = function(frequency) {
         this.frequency = frequency;
     }
@@ -88,22 +81,6 @@ module.exports = ["$q", "$rootScope", "Recorder", "ColorGenerator",
             this.sound = new Audio();
             this.sound.src = window.URL.createObjectURL(blob);
             this.blob = blob;
-
-            //if(!this.wavesurfer)
-            //this.wavesurfer && this.wavesurfer.destroy();f
-
-            /*if (!this.wavesurfer) {
-                this.wavesurfer = WaveSurfer.create({
-                    container: "#" + this.idContainer,
-                    waveColor: 'blue',
-                    fillParent: true,
-                    height: 70
-                });
-            }
-
-            //this.wavesurfer.load(window.URL.createObjectURL(blob));
-            this.wavesurfer.loadBlob(blob);*/
-
         }.bind(this));
     }
 
@@ -123,6 +100,7 @@ module.exports = ["$q", "$rootScope", "Recorder", "ColorGenerator",
             this.sound.currentTime = this.sound.duration * this.cursors.left;
         }
 
+        this.sound.volume = this.volume;
         this.sound.play();
 
         this.timerCurrent = window.setInterval(function() {
@@ -158,9 +136,7 @@ module.exports = ["$q", "$rootScope", "Recorder", "ColorGenerator",
                     this.sound.currentTime = this.sound.duration * this.cursors.left;
                 }
                 this.sound.play();
-               /* window.setTimeout(function() {
-                    this.sound.play();
-                }.bind(this), this.getFrequency());*/
+
             }.bind(this));
         }
 

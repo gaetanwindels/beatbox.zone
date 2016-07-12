@@ -1,8 +1,11 @@
-module.exports = ["$scope", "TracklistService", function($scope, TracklistService) {
+module.exports = ["$scope", "Track", "TracklistService",
+          function($scope,   Track,   TracklistService) {
 
     this.tracklistService = TracklistService;
 
     this.tracklistService.addTrack();
+
+    this.emptyTrack = new Track();
 
     this.addTrack = function() {
         this.tracklistService.addTrack();
