@@ -2,25 +2,34 @@
    <!-- <i ng-click="track.service.cut()" class="fa fa-cut"></i>-->
     <div class="track-container" ng-style="{ 'background': track.service.color }">
 
-        <div ng-click="track.service.toggleSelect()" ng-class="{ 'selected' : track.service.isSelected() }"
-        class="btn-select"></div>
+       <!-- <div class="select-container">
+            <div ng-click="track.service.toggleSelect()" ng-class="{ 'selected' : track.service.isSelected() }"
+            class="btn-select"></div>
+        </div>-->
 
-        <i class="btn btn-round fa fa-retweet" aria-hidden="true"></i>
-        <i class="btn btn-round fa fa-braille" aria-hidden="true"></i>
 
-        <i ng-class="{ 'fa-microphone-slash selected' : track.service.isRecording(),
-                       'fa-microphone' : !track.service.isRecording()}"
-           ng-click="track.toggleRecording()"
-           class="fa btn" aria-hidden="true"></i>
-        <i ng-class="{ 'fa-play' : !track.service.isPlaying(),
-                       'fa-play selected' : track.service.isPlaying()}"
-           ng-click="track.togglePlay()"
-           class="fa btn" aria-hidden="true"></i>
-        <i ng-class="{ 'selected': track.service.isLooping() }" class="btn fa fa-refresh" ng-click="track.toggleLooping()" aria-hidden="true"></i>
+        <div class="sync-container">
+            <i class="btn btn-round fa fa-retweet" aria-hidden="true"></i>
+            <i class="btn btn-round fa fa-braille" aria-hidden="true"></i>
+        </div>
 
-        <i ng-click="track.onClose()" class="fa fa-trash" aria-hidden="true"></i>
+        <div class="record-container">
+            <i ng-class="{ 'fa-microphone-slash selected' : track.service.isRecording(),
+                           'fa-microphone' : !track.service.isRecording()}"
+               ng-click="track.toggleRecording()"
+               class="fa btn" aria-hidden="true"></i>
+            <i ng-class="{ 'fa-play' : !track.service.isPlaying(),
+                           'fa-play selected' : track.service.isPlaying()}"
+               ng-click="track.togglePlay()"
+               class="fa btn" aria-hidden="true"></i>
+            <i ng-class="{ 'selected': track.service.isLooping() }" class="btn fa fa-refresh" ng-click="track.toggleLooping()" aria-hidden="true"></i>
+        </div>
 
-        <i class="btn btn-round fa fa-volume-up" aria-hidden="true"></i>
+        <div class="volume-container">
+            <i class="btn btn-round fa fa-volume-up" aria-hidden="true"></i>
+            <i ng-click="track.onClose()" class="btn btn-round fa fa-trash" aria-hidden="true"></i>
+        </div>
+
    <!--     <div style="    display: inline-block;
     position: absolute;
     right: 80px;

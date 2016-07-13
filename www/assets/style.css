@@ -43,7 +43,7 @@ tracklist {
     font-size: 50px;
     line-height: 120px;
     cursor: pointer;
-    width: 120px;
+    width: 33%;
     height: 120px;
     margin: 0px -2px;
     box-shadow: inset 0px 0px 6px 0px #555555, 0px 0px 4px 1px #000000;
@@ -56,21 +56,22 @@ tracklist {
     height: 96px;
     border-radius: 50%;
     line-height: 96px;
-    font-size: 38px
+    font-size: 38px;
 }
 
 .track .fa.selected {
     background: #67ff67;
 }
 .track .fa.fa-trash {
-    background: none;
+    width: 96px;
+   /* background: none;
     border: none;
     box-shadow: none;
     position: absolute;
     right: 0;
     margin-right: 10px;
     font-size: 50px;
-    line-height: 120px;
+    line-height: 120px;*/
 }
 
 .track .fa.fa-microphone-slash.selected {
@@ -139,7 +140,6 @@ waveform-cursors {
 
 .btn-select {
     cursor: pointer;
-    position: absolute;
     left: 0;
     margin-top: 14px;
     border-radius: 50%;
@@ -155,7 +155,6 @@ waveform-cursors {
 .btn-select:after {
     content: "";
     display: block;
-    position: absolute;
     left: 0;
     top: 0;
     width: 60%;
@@ -175,6 +174,7 @@ waveform-cursors {
 
 .track .fa.fa-volume-up {
     font-size: 30px;
+    width: 96px;
 }
 
 div.rzslider {
@@ -207,4 +207,49 @@ div .rzslider .rz-pointer:after {
     -moz-border-radius: 4px;
     border-radius: 4px;
     content: '';
+}
+
+.track .btn-round.fa-braille {
+    border-radius: 0;
+    border-top-right-radius: 30%;
+    border-bottom-right-radius: 30%;
+    width: 30%;
+}
+
+.track .btn-round.fa-retweet {
+    border-radius: 0;
+    border-top-left-radius: 30%;
+    border-bottom-left-radius: 30%;
+    width: 30%;
+}
+
+/*******************/
+/* Track containers
+ *******************/
+.track .select-container,
+.track .sync-container,
+.track .record-container,
+.track .volume-container {
+    float: left;
+}
+
+.track .select-container {
+    width: 10%;
+}
+
+.track .sync-container {
+    padding-top: 12px;
+    width: 28%;
+    margin: 0 1%;
+}
+
+.track .record-container {
+    width: 38%;
+    margin: 0 1%;
+}
+
+.track .volume-container {
+    padding-top: 12px;
+    width: 28%;
+    margin: 0 1%;
 }
