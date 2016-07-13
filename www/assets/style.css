@@ -32,6 +32,7 @@ tracklist {
     text-align: center;
     background: linear-gradient(to bottom, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
     background: linear-gradient(to left, #43cea2 , #185a9d);
+    box-shadow: inset 0px 0px 50px 0px #000000;
 }
 
 .waveform {
