@@ -5,6 +5,9 @@
         <div ng-click="track.service.toggleSelect()" ng-class="{ 'selected' : track.service.isSelected() }"
         class="btn-select"></div>
 
+        <i class="btn btn-round fa fa-retweet" aria-hidden="true"></i>
+        <i class="btn btn-round fa fa-braille" aria-hidden="true"></i>
+
         <i ng-class="{ 'fa-microphone-slash selected' : track.service.isRecording(),
                        'fa-microphone' : !track.service.isRecording()}"
            ng-click="track.toggleRecording()"
@@ -17,13 +20,14 @@
 
         <i ng-click="track.onClose()" class="fa fa-trash" aria-hidden="true"></i>
 
-        <div style="    display: inline-block;
+        <i class="btn btn-round fa fa-volume-up" aria-hidden="true"></i>
+   <!--     <div style="    display: inline-block;
     position: absolute;
     right: 80px;
     line-height: 110px;">
             <i class="fa fa-volume-up" aria-hidden="true"></i>
             <rzslider rz-slider-model="track.service.volume" rz-slider-options="track.sliderOptions"></rzslider>
-        </div>
+        </div>-->
 
 
 <!--    <i ng-click="track.lowerFrequency()" class="fa fa-minus" aria-hidden="true"></i>

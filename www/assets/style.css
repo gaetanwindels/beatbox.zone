@@ -15,7 +15,7 @@ tracklist {
 .tracklist-container {
     position: fixed;
     top: 0;
-    bottom: 155px;
+    bottom: 150px;
     right: 0;
     left: 0;
     overflow: auto;
@@ -24,7 +24,7 @@ tracklist {
 .track-container {
    /* box-shadow: inset 0px 0px 13px 0px #000000;*/
     width: 100%;
-    height: 100px;
+    height: 120px;
     display: block;
     border-bottom: 1px black solid;
     background-color: grey;
@@ -34,20 +34,29 @@ tracklist {
 }
 
 .waveform {
-    height: 70px;
+    height: 84px;
     background-color: white;
     border-bottom: 1px black solid;
 }
 
 .track .btn {
     font-size: 50px;
-    line-height: 100px;
+    line-height: 120px;
     cursor: pointer;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin: 0px -2px;
     box-shadow: inset 0px 0px 6px 0px #555555, 0px 0px 4px 1px #000000;
     background: linear-gradient(to bottom, rgb(222, 222, 222) 0%,rgb(220, 220, 220) 44%,rgb(199, 199, 199) 100%)
+}
+
+.track .btn-round {
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    line-height: 96px;
+    font-size: 38px
 }
 
 .track .fa.selected {
@@ -61,7 +70,7 @@ tracklist {
     right: 0;
     margin-right: 10px;
     font-size: 50px;
-    line-height: 100px;
+    line-height: 120px;
 }
 
 .track .fa.fa-microphone-slash.selected {
@@ -123,23 +132,24 @@ waveform-cursors {
     width: 100%;
     height: 150px;
     background-color: grey;
-    border-top: 5px white solid;
     text-align: center;
+    background: linear-gradient(to bottom, rgb(140, 140, 140) 0%,rgba(120,120,120,1) 44%,rgba(140,140,140,1) 100%);
+    box-shadow: 0px 0px 15px 2px #000000;
 }
 
 .btn-select {
     cursor: pointer;
     position: absolute;
     left: 0;
-    width: 70px;
-    margin-left: 8px;
-    height: 70px;
     margin-top: 14px;
     border-radius: 50%;
     background-color: #f7f7f7;
     border: 3px black solid;
     line-height: 120px;
     box-shadow: inset 0px 0px 8px 0px #000000;
+    width: 84px;
+    margin-left: 8px;
+    height: 84px;
 }
 
 .btn-select:after {
